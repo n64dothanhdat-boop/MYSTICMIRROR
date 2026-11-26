@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MYSTIC MIRROR</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="game-wrapper">
+    <header class="topbar">
+        <div class="logo">MYSTIC <span>MIRROR</span></div>
+        <div class="chapter">CHAPTER 01 — THE UNKNOWN</div>
+    </header>
+
+    <main>
+        <div class="game-screen">
+            <canvas id="gameCanvas" width="960" height="540"></canvas>
+
+            <div class="location-label" id="location">
+                HOSHIKAWA TOWN
+            </div>
+
+            <div class="interaction" id="interaction">
+                Nhấn E để tương tác
+            </div>
+
+            <div class="battle-screen hidden" id="battleScreen">
+                <div class="battle-top">
+                    <div class="enemy-info">
+                        <div id="enemyName">SHADOW</div>
+                        <div class="hp-track">
+                            <div id="enemyHp" class="hp-fill"></div>
+                        </div>
+                        <small id="enemyHpText">100 / 100 HP</small>
+                    </div>
+                    <div class="battle-message" id="battleMessage">
+                        A SHADOW APPEARED!
+                    </div>
+                </div>
+
+                <div class="battle-bottom">
+                    <div class="player-battle-info">
+                        <strong>THE AWAKENER</strong>
+                        <div>HP <span id="battleHP">120 / 120</span></div>
+                        <div class="hp-track">
+                            <div id="playerHp" class="hp-fill"></div>
+                        </div>
+                        <div>MP <span id="battleMP">60 / 60</span></div>
+                        <div class="mp-track">
+                            <div id="playerMp" class="mp-fill"></div>
+                        </div>
+                    </div>
+
+                    <div class="battle-actions">
+                        <div class="battle-title">COMMAND</div>
+                        <div class="action-grid">
+                            <button onclick="battleAction('attack')">⚔ ATTACK</button>
+                            <button onclick="showSkills()">✦ SKILL</button>
+                            <button onclick="battleAction('guard')">🛡 GUARD</button>
+                            <button onclick="battleAction('escape')">↗ ESCAPE</button>
+                        </div>
+                        <div id="skillMenu" class="skill-menu hidden">
+                            <button onclick="battleAction('fire')">FIRE — 8 MP</button>
+                            <button onclick="battleAction('ice')">ICE — 8 MP</button>
+                            <button onclick="battleAction('thunder')">THUNDER — 12 MP</button>
+                            <button onclick="hideSkills()">BACK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialogue hidden" id="dialogue">
+                <div class="dialogue-name">???</div>
+                <p id="dialogueText"></p>
+                <button onclick="closeDialogue()">CONTINUE ▶</button>
+            </div>
+        </div>
+
+        <section class="bottom-hud">
+            <div class="character-card">
+                <div class="avatar">★</div>
+                <div>
+                    <strong>THE AWAKENER</strong>
+                    <div class="level" id="levelText">LEVEL 1</div>
+                </div>
+            </div>
+
+            <div class="stats">
+                <div class="stat">
+                    <span>HP</span>
+                    <div class="bar"><div id="worldHp" class="bar-hp"></div></div>
+                    <small id="worldHpText">120/120</small>
+                </div>
+                <div class="stat">
+                    <span>MP</span>
+                    <div class="bar"><div id="worldMp" class="bar-mp"></div></div>
+                    <small id="worldMpText">60/60</small>
+                </div>
+                <div class="stat">
+                    <span>EXP</span>
+                    <div class="bar"><div id="worldExp" class="bar-exp"></div></div>
+                    <small id="worldExpText">0/100</small>
+                </div>
+            </div>
+
+            <div class="controls">
+                <div>W A S D / ARROWS : MOVE</div>
+                <div>E : INTERACT</div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        MYSTIC MIRROR © 2026 — AN ORIGINAL FAN-INSPIRED RPG PROJECT
+    </footer>
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>
