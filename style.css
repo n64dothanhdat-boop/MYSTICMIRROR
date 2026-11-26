@@ -1,0 +1,336 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:wght@400;700;900&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: #100d19;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-wrapper {
+    width: min(1100px, 96vw);
+    padding: 15px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5px;
+}
+
+.logo {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 17px;
+    color: #fff;
+}
+
+.logo span {
+    color: #e84b76;
+}
+
+.chapter {
+    color: #a69bbd;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.game-screen {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border: 4px solid #40304f;
+    background: #181323;
+    box-shadow: 0 0 35px #000;
+}
+
+canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    image-rendering: pixelated;
+}
+
+.location-label {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #17101dcc;
+    border-left: 4px solid #e84b76;
+    padding: 12px 16px;
+    font-family: 'Press Start 2P';
+    font-size: 10px;
+}
+
+.interaction {
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #17101de8;
+    border: 1px solid #e84b76;
+    padding: 12px 18px;
+    font-size: 13px;
+    display: none;
+}
+
+.bottom-hud {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    background: #21192e;
+    border: 2px solid #40304f;
+    border-top: none;
+    padding: 18px;
+}
+
+.character-card {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    min-width: 190px;
+}
+
+.avatar {
+    width: 42px;
+    height: 42px;
+    background: #a52d5a;
+    display: grid;
+    place-items: center;
+    font-size: 24px;
+}
+
+.level {
+    color: #e84b76;
+    margin-top: 7px;
+    font-size: 11px;
+}
+
+.stats {
+    flex: 1;
+    display: flex;
+    gap: 18px;
+}
+
+.stat {
+    flex: 1;
+    font-size: 11px;
+}
+
+.stat span {
+    color: #c7b6d8;
+    font-weight: bold;
+}
+
+.bar, .hp-track, .mp-track {
+    width: 100%;
+    height: 9px;
+    background: #09070e;
+    margin: 6px 0;
+    overflow: hidden;
+}
+
+.bar-hp, .hp-fill {
+    height: 100%;
+    background: #ed405d;
+}
+
+.bar-mp, .mp-fill {
+    height: 100%;
+    background: #409de9;
+}
+
+.bar-exp {
+    height: 100%;
+    background: #e5b34c;
+}
+
+.stat small {
+    color: #a99bb7;
+}
+
+.controls {
+    color: #b9abc9;
+    font-size: 10px;
+    line-height: 2;
+    text-align: right;
+    min-width: 150px;
+}
+
+footer {
+    color: #786d89;
+    font-size: 10px;
+    text-align: center;
+    margin-top: 16px;
+    letter-spacing: 1px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* BATTLE */
+
+.battle-screen {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #21132e, #090813);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 25px;
+}
+
+.battle-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.enemy-info {
+    width: 220px;
+    font-family: 'Press Start 2P';
+    font-size: 11px;
+    line-height: 2;
+}
+
+.enemy-info small {
+    font-family: Roboto;
+}
+
+.battle-message {
+    font-family: 'Press Start 2P';
+    color: #ff638b;
+    font-size: 12px;
+    text-align: right;
+    line-height: 2;
+}
+
+.battle-bottom {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.player-battle-info {
+    width: 250px;
+    background: #30233e;
+    border: 2px solid #694568;
+    padding: 15px;
+    line-height: 2.1;
+    font-size: 12px;
+}
+
+.player-battle-info strong {
+    color: #ff719a;
+}
+
+.battle-actions {
+    width: 350px;
+    background: #17101f;
+    border: 2px solid #e84b76;
+    padding: 14px;
+}
+
+.battle-title {
+    font-family: 'Press Start 2P';
+    color: #e84b76;
+    font-size: 12px;
+    margin-bottom: 12px;
+}
+
+.action-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+button {
+    cursor: pointer;
+    color: white;
+    background: #35243f;
+    border: 1px solid #8b547c;
+    padding: 12px 8px;
+    font-weight: bold;
+    transition: 0.15s;
+}
+
+button:hover {
+    background: #a92f61;
+    border-color: white;
+    transform: translateY(-2px);
+}
+
+.skill-menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.dialogue {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+    background: #17101fee;
+    border: 2px solid #e84b76;
+    padding: 18px;
+}
+
+.dialogue-name {
+    font-family: 'Press Start 2P';
+    color: #ff719a;
+    font-size: 11px;
+}
+
+.dialogue p {
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.dialogue button {
+    float: right;
+}
+
+@media(max-width: 700px) {
+    .chapter, .controls {
+        display: none;
+    }
+
+    .bottom-hud {
+        flex-wrap: wrap;
+    }
+
+    .stats {
+        min-width: 100%;
+    }
+
+    .battle-bottom {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .battle-actions, .player-battle-info {
+        width: 100%;
+    }
+
+    .battle-screen {
+        padding: 10px;
+    }
+
+    .battle-message {
+        font-size: 8px;
+    }
+}
